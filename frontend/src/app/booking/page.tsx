@@ -1,14 +1,14 @@
 "use client";
-import Navbar from '@/components/layout/Navbar';
+import React from 'react';
 
 export default function BookingPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
-      <Navbar />
-      <div className="pt-32 pb-20 px-6 text-center">
-        <h1 className="text-2xl font-bold text-emerald-900">Halaman Reservasi Senzia</h1>
-        <p className="mt-4">Sedang dalam pemeliharaan sistem.</p>
-      </div>
-    </main>
+    <div style={{ padding: '100px 20px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+      <h1 style={{ color: '#064e3b' }}>Reservasi Senzia Spa</h1>
+      <p>Silakan hubungi WhatsApp kami untuk booking.</p>
+      <a href="https://wa.me/628123456789" style={{ background: '#064e3b', color: 'white', padding: '12px 24px', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>
+        Hubungi WhatsApp
+      </a>
+    </div>
   );
 }
