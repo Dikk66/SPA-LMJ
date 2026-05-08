@@ -4,15 +4,17 @@ import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import { Suspense } from 'react';
 
-// 1. Komponen Internal yang menggunakan useSearchParams
+// Baris sakti ini memaksa Next.js untuk tidak melakukan prerender statis
+export const dynamic = 'force-dynamic';
+
 function BookingFormInner() {
   const searchParams = useSearchParams();
   const selectedService = searchParams.get('service') || '';
 
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-[40px] p-8 md:p-12 shadow-xl shadow-emerald-900/5 border border-slate-100">
-      <h1 className="text-3xl font-serif font-bold text-emerald-900 mb-2 text-center">Reservasi Layanan</h1>
-      <p className="text-slate-500 text-center mb-10">Lengkapi data untuk terapis Senzia kami.</p>
+      <h2 className="text-3xl font-serif font-bold text-emerald-900 mb-2 text-center">Reservasi Layanan</h2>
+      <p className="text-slate-500 text-center mb-10 text-sm">Lengkapi data untuk terapis Senzia kami.</p>
       
       <form className="space-y-6">
         <div>
@@ -55,13 +57,11 @@ function BookingFormInner() {
   );
 }
 
-// 2. Halaman Utama yang di-Export Default
 export default function BookingPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <Navbar />
       <div className="pt-32 pb-20 px-6">
-        {/* PEMBUNGKUS KRUSIAL: Suspense Boundary */}
         <Suspense fallback={
           <div className="flex flex-col items-center justify-center py-20 text-emerald-900">
              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-900"></div>
