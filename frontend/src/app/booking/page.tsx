@@ -3,14 +3,10 @@
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/layout/Navbar';
 
-// Kita panggil form secara dinamis, mematikan SSR khusus untuk bagian ini
+// MEMAKSA Vercel mengabaikan halaman ini saat build
 const BookingForm = dynamic(() => import('@/components/booking/BookingForm'), { 
   ssr: false,
-  loading: () => (
-    <div className="flex justify-center py-20">
-      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-900"></div>
-    </div>
-  )
+  loading: () => <div className="text-center py-20 font-bold text-emerald-900">Memuat...</div>
 });
 
 export default function BookingPage() {
