@@ -1,11 +1,10 @@
 "use client";
 
+import React, { Suspense } from 'react';
 import Navbar from '@/components/layout/Navbar';
-import { Suspense } from 'react';
 
-// Paksa agar tidak ada prerendering sama sekali
+// Memaksa halaman menjadi dinamis total
 export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
 
 function BookingForm() {
   return (
@@ -27,13 +26,27 @@ function BookingForm() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <input type="text" placeholder="Nama Lengkap" className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4" />
-          <input type="tel" placeholder="Nomor WA" className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4" />
+          <input 
+            type="text" 
+            placeholder="Nama Lengkap" 
+            className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4 outline-none focus:ring-2 focus:ring-emerald-500" 
+          />
+          <input 
+            type="tel" 
+            placeholder="Nomor WhatsApp" 
+            className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4 outline-none focus:ring-2 focus:ring-emerald-500" 
+          />
         </div>
 
-        <textarea placeholder="Alamat Lengkap di Lumajang" className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4 h-32"></textarea>
+        <textarea 
+          placeholder="Alamat Lengkap di Lumajang" 
+          className="w-full bg-slate-50 border-none rounded-2xl px-4 py-4 h-32 outline-none focus:ring-2 focus:ring-emerald-500"
+        ></textarea>
 
-        <button type="button" className="w-full bg-emerald-900 text-white py-5 rounded-full font-bold text-lg shadow-lg hover:bg-emerald-800 transition-all">
+        <button 
+          type="button" 
+          className="w-full bg-emerald-900 text-white py-5 rounded-full font-bold text-lg shadow-lg hover:bg-emerald-800 transition-all active:scale-95"
+        >
           Konfirmasi via WhatsApp
         </button>
       </form>
@@ -46,7 +59,7 @@ export default function BookingPage() {
     <main className="min-h-screen bg-slate-50">
       <Navbar />
       <div className="pt-32 pb-20 px-6">
-        <Suspense fallback={<div className="text-center py-20 font-bold">Memuat...</div>}>
+        <Suspense fallback={<div className="flex justify-center py-20 font-bold text-emerald-900">Memuat Form...</div>}>
           <BookingForm />
         </Suspense>
       </div>
